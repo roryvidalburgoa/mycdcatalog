@@ -41,7 +41,7 @@
 #include <time.h>
 
 #ifndef lint
-FILE_RCSID("@(#)$Id: print.c,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $")
+FILE_RCSID("@(#)$Id: print.c,v 1.34 2001/08/07 16:01:26 christos Exp $")
 #endif  /* lint */
 
 #define SZOF(a)	(sizeof(a) / sizeof(a[0]))

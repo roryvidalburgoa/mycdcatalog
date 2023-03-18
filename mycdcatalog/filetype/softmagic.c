@@ -35,7 +35,7 @@
 #include "file.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$Id: softmagic.c,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $")
+FILE_RCSID("@(#)$Id: softmagic.c,v 1.46 2001/07/23 00:02:32 christos Exp $")
 #endif	/* lint */
 
 static int match	__P((struct magic *, uint32, unsigned char *, int));
@@ -240,8 +240,7 @@ mprint(p, m)
 
   	switch (m->type) {
   	case BYTE:
-    /*printf("BYTE\n");*/
-    v = signextend(m, p->b);
+      		v = signextend(m, p->b);
 		sprintf(acode,"%2x",v);
 		sprintf(adesc,"%s",m->desc);
 
@@ -251,7 +250,6 @@ mprint(p, m)
   	case SHORT:
   	case BESHORT:
   	case LESHORT:
-    /*printf("SHORT\n");*/
 		v = signextend(m, p->h);
 		sprintf(acode,"%4x",v);
 		sprintf(adesc,"%s",m->desc);
@@ -262,7 +260,6 @@ mprint(p, m)
   	case LONG:
   	case BELONG:
   	case LELONG:
-    /*printf("LONG\n");*/
 		v = signextend(m, p->l);
 		sprintf(acode,"%8x",v);
 		sprintf(adesc,"%s",m->desc);
@@ -272,7 +269,6 @@ mprint(p, m)
 
   	case STRING:
   	case PSTRING:
-    /*printf("STRING\n");*/
 		if (m->reln == '=') {
 			sprintf(acode,"%s",m->value.s);
 			sprintf(adesc,"%s",m->desc);
@@ -295,7 +291,6 @@ mprint(p, m)
 	case DATE:
 	case BEDATE:
 	case LEDATE:
-      /*printf("DATE\n");*/
 			sprintf(acode,"%s",fmttime(p->l, 1));
 			sprintf(adesc,"%s",m->desc);
 		t = m->offset + sizeof(time_t);
@@ -304,7 +299,6 @@ mprint(p, m)
 	case LDATE:
 	case BELDATE:
 	case LELDATE:
-      /*printf("LDATE\n");*/
 			sprintf(acode,"%s",fmttime(p->l, 0));
 			sprintf(adesc,"%s",m->desc);
 		t = m->offset + sizeof(time_t);

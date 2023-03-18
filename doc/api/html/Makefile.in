@@ -1,4 +1,4 @@
-# KDE tags expanded automatically by am_edit - $Revision: 1.1.1.1 $ 
+# KDE tags expanded automatically by am_edit - $Revision: 1.305 $ 
 # Makefile.in generated automatically by automake 1.4-p5 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
@@ -237,7 +237,7 @@ DIST_COMMON =  Makefile.am Makefile.in
 
 #>- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 #>+ 4
-KDE_DIST=tags waitthread_8h-source.html SResView_8ui_8h-source.html initform_8h-source.html classFileHandlerFactory.html annotated.html classShowError-members.html sqlmanager_8h-source.html classSession-members.html classFileHandler.html classCDReader.html mp3geob_8h-source.html classFileHandler-members.html doxygen.gif mp3__id3_8h-source.html classMP3Handler.gif tar_8h-source.html dirfile_8h-source.html classMP3Lyrics-members.html session_8h-source.html filetype_2file_8h-source.html restart_8h-source.html classShowError.html classMP3__ID3-members.html classMP3__ID3.html mp3handler_8h-source.html initializer_8h-source.html classMP3__Header.html classMP3GEOB-members.html classes.html classPDFHandler-members.html mp3__header_8h-source.html mp3apic_8h-source.html MakefileCONFIG_HEADERS= file_8h-source.html classMP3GEOB.html classFileHandler.gif cdreader_8h-source.html functions.html filehandler_8h-source.html filetype_8h-source.html names_8h-source.html classMP3Handler-members.html classMP3Handler.html classTraverser.html classTraverser-members.html pdfhandler_8h-source.html index.html mp3lyrics_8h-source.html classFileHandlerFactory-members.html resultsview_8h-source.html results_8h-source.html classMP3APIC-members.html classMP3POPM-members.html mounter_8h-source.html classMP3APIC.html mp3popm_8h-source.html classWaitThread-members.html traverser_8h-source.html classPDFHandler.html classMP3Lyrics.html files.html classSession.html showerror_8h-source.html classMP3POPM.html directory_8h-source.html closer_8h-source.html classWaitThread.html cfgmanager_8h-source.html hierarchy.html patchlevel_8h-source.html doxygen.css classPDFHandler.gif filehandlerfactory_8h-source.html cfg_8h-source.html volume_8h-source.html acconfig_8h-source.html classMP3__Header-members.html config_8h-source.html classCDReader-members.html 
+KDE_DIST=tags waitthread_8h-source.html SResView_8ui_8h-source.html initform_8h-source.html annotated.html classFileHandlerFactory.html classShowError-members.html sqlmanager_8h-source.html classSession-members.html mp3geob_8h-source.html classCDReader.html classFileHandler.html doxygen.gif classFileHandler-members.html mp3__id3_8h-source.html classMP3Handler.gif tar_8h-source.html dirfile_8h-source.html classMP3Lyrics-members.html session_8h-source.html filetype_2file_8h-source.html restart_8h-source.html classShowError.html classMP3__ID3-members.html classMP3__ID3.html mp3handler_8h-source.html initializer_8h-source.html classMP3__Header.html classMP3GEOB-members.html classes.html classPDFHandler-members.html mp3__header_8h-source.html mp3apic_8h-source.html file_8h-source.html MakefileCONFIG_HEADERS= classMP3GEOB.html classFileHandler.gif cdreader_8h-source.html functions.html filehandler_8h-source.html filetype_8h-source.html names_8h-source.html classMP3Handler-members.html classMP3Handler.html classTraverser.html classTraverser-members.html pdfhandler_8h-source.html index.html mp3lyrics_8h-source.html classFileHandlerFactory-members.html resultsview_8h-source.html results_8h-source.html classMP3APIC-members.html classMP3POPM-members.html mounter_8h-source.html classMP3APIC.html mp3popm_8h-source.html classWaitThread-members.html traverser_8h-source.html classPDFHandler.html classMP3Lyrics.html files.html classSession.html showerror_8h-source.html directory_8h-source.html classMP3POPM.html closer_8h-source.html classWaitThread.html hierarchy.html cfgmanager_8h-source.html patchlevel_8h-source.html classPDFHandler.gif doxygen.css filehandlerfactory_8h-source.html cfg_8h-source.html volume_8h-source.html classMP3__Header-members.html acconfig_8h-source.html config_8h-source.html classCDReader-members.html 
 
 DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
 
@@ -249,12 +249,12 @@ GZIP_ENV = --best
 all: docs-am  all-redirect
 .SUFFIXES:
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu doc/api/html/Makefile
+#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps doc/api/html/Makefile
 #>+ 2
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu doc/api/html/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps doc/api/html/Makefile
 	cd $(top_srcdir) && perl admin/am_edit doc/api/html/Makefile.in
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -353,11 +353,6 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = doc/api/html
 
 distdir: $(DISTFILES)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(top_distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	&& $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu doc/api/html/Makefile
 	@for file in $(DISTFILES); do \
 	d=$(srcdir); \
 	if test -d $$d/$$file; then \
@@ -462,7 +457,7 @@ docs-am:
 
 #>+ 5
 force-reedit:
-		cd $(top_srcdir) && $(AUTOMAKE) --gnu doc/api/html/Makefile
+		cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps doc/api/html/Makefile
 	cd $(top_srcdir) && perl admin/am_edit doc/api/html/Makefile.in
 
 

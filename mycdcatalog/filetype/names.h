@@ -10,7 +10,7 @@
  *
  * See LEGAL.NOTICE
  *
- * $Id: names.h,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $
+ * $Id: names.h,v 1.18 2000/08/05 17:36:49 christos Exp $
  */
 
 /*

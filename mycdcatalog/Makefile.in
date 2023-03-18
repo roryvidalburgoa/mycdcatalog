@@ -1,4 +1,4 @@
-# KDE tags expanded automatically by am_edit - $Revision: 1.1.1.1 $ 
+# KDE tags expanded automatically by am_edit - $Revision: 1.305 $ 
 # Makefile.in generated automatically by automake 1.4-p5 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
@@ -334,36 +334,6 @@ DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_
 
 TAR = gtar
 GZIP_ENV = --best
-#>- DEP_FILES =  .deps/cdreader.P .deps/cfg.P .deps/cfgmanager.P \
-#>- .deps/closer.P .deps/directory.P .deps/dirfile.P .deps/file.P \
-#>- .deps/filehandler.P .deps/filehandlerfactory.P .deps/filetype.P \
-#>- .deps/initform.P .deps/initializer.P .deps/main.P .deps/mounter.P \
-#>- .deps/mp3_header.P .deps/mp3_id3.P .deps/mp3apic.P .deps/mp3geob.P \
-#>- .deps/mp3handler.P .deps/mp3lyrics.P .deps/mp3popm.P .deps/pdfhandler.P \
-#>- .deps/restart.P .deps/results.P .deps/resultsview.P .deps/session.P \
-#>- .deps/showerror.P .deps/sqlmanager.P .deps/traverser.P .deps/volume.P \
-#>- .deps/waitthread.P
-#>+ 20
-@KDE_USE_FINAL_TRUE@DEP_FILES =  $(DEPDIR)/SResView.P $(DEPDIR)/SInitForm.P $(DEPDIR)/resultsview.moc.P $(DEPDIR)/results.moc.P $(DEPDIR)/mycdcatalog_meta_unload.P  $(DEPDIR)/mycdcatalog.all_cpp.P \
-		  .deps/cdreader.P .deps/cfg.P .deps/cfgmanager.P \
-	.deps/closer.P .deps/directory.P .deps/dirfile.P .deps/file.P \
-	.deps/filehandler.P .deps/filehandlerfactory.P .deps/filetype.P \
-	.deps/initform.P .deps/initializer.P .deps/main.P .deps/mounter.P \
-	.deps/mp3_header.P .deps/mp3_id3.P .deps/mp3apic.P .deps/mp3geob.P \
-	.deps/mp3handler.P .deps/mp3lyrics.P .deps/mp3popm.P .deps/pdfhandler.P \
-	.deps/restart.P .deps/results.P .deps/resultsview.P .deps/session.P \
-	.deps/showerror.P .deps/sqlmanager.P .deps/traverser.P .deps/volume.P \
-	.deps/waitthread.P
-@KDE_USE_FINAL_FALSE@DEP_FILES =  $(DEPDIR)/SResView.P $(DEPDIR)/SInitForm.P $(DEPDIR)/resultsview.moc.P $(DEPDIR)/results.moc.P $(DEPDIR)/mycdcatalog_meta_unload.P   .deps/cdreader.P .deps/cfg.P .deps/cfgmanager.P \
-	.deps/closer.P .deps/directory.P .deps/dirfile.P .deps/file.P \
-	.deps/filehandler.P .deps/filehandlerfactory.P .deps/filetype.P \
-	.deps/initform.P .deps/initializer.P .deps/main.P .deps/mounter.P \
-	.deps/mp3_header.P .deps/mp3_id3.P .deps/mp3apic.P .deps/mp3geob.P \
-	.deps/mp3handler.P .deps/mp3lyrics.P .deps/mp3popm.P .deps/pdfhandler.P \
-	.deps/restart.P .deps/results.P .deps/resultsview.P .deps/session.P \
-	.deps/showerror.P .deps/sqlmanager.P .deps/traverser.P .deps/volume.P \
-	.deps/waitthread.P
-
 SOURCES = $(mycdcatalog_SOURCES)
 OBJECTS = $(mycdcatalog_OBJECTS)
 
@@ -373,12 +343,12 @@ all: docs-am  all-redirect
 .SUFFIXES:
 .SUFFIXES: .S .c .cpp .lo .o .obj .s
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/Makefile
+#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/Makefile
 #>+ 2
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/Makefile
 	cd $(top_srcdir) && perl admin/am_edit mycdcatalog/Makefile.in
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -408,6 +378,9 @@ uninstall-binPROGRAMS:
 	rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
 	done
 
+.c.o:
+	$(COMPILE) -c $<
+
 # FIXME: We should only use cygpath when building on Windows,
 # and only if it is available.
 .c.obj:
@@ -429,6 +402,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
 
 .s.lo:
 	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
@@ -550,11 +526,6 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = mycdcatalog
 
 distdir: $(DISTFILES)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(top_distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	&& $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu mycdcatalog/Makefile
 	@for file in $(DISTFILES); do \
 	d=$(srcdir); \
 	if test -d $$d/$$file; then \
@@ -575,57 +546,83 @@ distdir: $(DISTFILES)
 	|| exit 1; \
 	fi; \
 	done
+cdreader.o: cdreader.cpp cdreader.h volume.h directory.h dirfile.h \
+	showerror.h
+cfg.o: cfg.cpp cfg.h initform.h ../config.h SInitForm.h
+cfgmanager.o: cfgmanager.cpp cfgmanager.h cfg.h
+closer.o: closer.cpp closer.h cfgmanager.h cfg.h mounter.h
+directory.o: directory.cpp directory.h dirfile.h
+dirfile.o: dirfile.cpp dirfile.h
+file.o: file.cpp file.h dirfile.h filetype.h
+filehandler.o: filehandler.cpp filehandler.h file.h dirfile.h filetype.h
+filehandlerfactory.o: filehandlerfactory.cpp filehandlerfactory.h \
+	filehandler.h file.h dirfile.h filetype.h mp3handler.h \
+	mp3_id3.h mp3geob.h sqlmanager.h volume.h directory.h \
+	showerror.h mp3popm.h mp3apic.h mp3lyrics.h mp3_header.h \
+	pdfhandler.h
+filetype.o: filetype.cpp filetype.h filetype/file.h ../config.h
+initform.o: initform.cpp initform.h ../config.h cfg.h SInitForm.h \
+	closer.h cfgmanager.h session.h volume.h directory.h dirfile.h \
+	sqlmanager.h file.h filetype.h showerror.h results.h
+initializer.o: initializer.cpp initializer.h cfgmanager.h cfg.h \
+	session.h volume.h directory.h dirfile.h sqlmanager.h file.h \
+	filetype.h showerror.h results.h filehandlerfactory.h \
+	filehandler.h
+main.o: main.cpp initform.h ../config.h cfg.h SInitForm.h initializer.h \
+	cfgmanager.h
+mounter.o: mounter.cpp mounter.h showerror.h
+mp3_header.o: mp3_header.cpp mp3_header.h file.h dirfile.h filetype.h \
+	sqlmanager.h volume.h directory.h showerror.h
+mp3_id3.o: mp3_id3.cpp mp3_id3.h mp3geob.h sqlmanager.h volume.h \
+	directory.h dirfile.h file.h filetype.h showerror.h mp3popm.h \
+	mp3apic.h mp3lyrics.h
+mp3apic.o: mp3apic.cpp mp3apic.h sqlmanager.h volume.h directory.h \
+	dirfile.h file.h filetype.h showerror.h
+mp3geob.o: mp3geob.cpp mp3geob.h sqlmanager.h volume.h directory.h \
+	dirfile.h file.h filetype.h showerror.h
+mp3handler.o: mp3handler.cpp mp3handler.h filehandler.h file.h dirfile.h \
+	filetype.h mp3_id3.h mp3geob.h sqlmanager.h volume.h \
+	directory.h showerror.h mp3popm.h mp3apic.h mp3lyrics.h \
+	mp3_header.h
+mp3lyrics.o: mp3lyrics.cpp mp3lyrics.h sqlmanager.h volume.h directory.h \
+	dirfile.h file.h filetype.h showerror.h
+mp3popm.o: mp3popm.cpp mp3popm.h sqlmanager.h volume.h directory.h \
+	dirfile.h file.h filetype.h showerror.h
+mycdcatalog_meta_unload.o: mycdcatalog_meta_unload.cpp
+pdfhandler.o: pdfhandler.cpp pdfhandler.h filehandler.h file.h dirfile.h \
+	filetype.h
+restart.o: restart.cpp restart.h initform.h ../config.h cfg.h \
+	SInitForm.h traverser.h results.h volume.h directory.h \
+	dirfile.h sqlmanager.h file.h filetype.h showerror.h \
+	resultsview.h SResView.h mounter.h
+results.moc.o: results.moc.cpp results.h volume.h directory.h dirfile.h
+results.o: results.cpp results.h volume.h directory.h dirfile.h \
+	resultsview.h SResView.h traverser.h cfg.h sqlmanager.h file.h \
+	filetype.h showerror.h
+resultsview.moc.o: resultsview.moc.cpp resultsview.h SResView.h \
+	traverser.h cfg.h results.h volume.h directory.h dirfile.h \
+	sqlmanager.h file.h filetype.h showerror.h
+resultsview.o: resultsview.cpp resultsview.h SResView.h traverser.h \
+	cfg.h results.h volume.h directory.h dirfile.h sqlmanager.h \
+	file.h filetype.h showerror.h closer.h cfgmanager.h restart.h \
+	initform.h ../config.h SInitForm.h
+session.o: session.cpp session.h cfg.h volume.h directory.h dirfile.h \
+	sqlmanager.h file.h filetype.h showerror.h results.h initform.h \
+	../config.h SInitForm.h resultsview.h SResView.h traverser.h \
+	mounter.h cdreader.h waitthread.h closer.h cfgmanager.h
+showerror.o: showerror.cpp showerror.h
+SInitForm.o: SInitForm.cpp SInitForm.h SInitForm.moc
+sqlmanager.o: sqlmanager.cpp sqlmanager.h volume.h directory.h dirfile.h \
+	file.h filetype.h showerror.h
+SResView.o: SResView.cpp SResView.h SResView.ui.h SResView.moc
+traverser.o: traverser.cpp traverser.h cfg.h results.h volume.h \
+	directory.h dirfile.h sqlmanager.h file.h filetype.h \
+	showerror.h filehandlerfactory.h filehandler.h
+volume.o: volume.cpp volume.h directory.h dirfile.h
+waitthread.o: waitthread.cpp waitthread.h results.h volume.h directory.h \
+	dirfile.h traverser.h cfg.h sqlmanager.h file.h filetype.h \
+	showerror.h session.h resultsview.h SResView.h
 
-DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
-
--include $(DEP_FILES)
-
-mostlyclean-depend:
-
-clean-depend:
-
-distclean-depend:
-	-rm -rf .deps
-
-maintainer-clean-depend:
-
-%.o: %.c
-	@echo '$(COMPILE) -c $<'; \
-	$(COMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-cp .deps/$(*F).pp .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm .deps/$(*F).pp
-
-%.lo: %.c
-	@echo '$(LTCOMPILE) -c $<'; \
-	$(LTCOMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-sed -e 's/^\([^:]*\)\.o[ 	]*:/\1.lo \1.o :/' \
-	< .deps/$(*F).pp > .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm -f .deps/$(*F).pp
-
-%.o: %.cpp
-	@echo '$(CXXCOMPILE) -c $<'; \
-	$(CXXCOMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-cp .deps/$(*F).pp .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm .deps/$(*F).pp
-
-%.lo: %.cpp
-	@echo '$(LTCXXCOMPILE) -c $<'; \
-	$(LTCXXCOMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-sed -e 's/^\([^:]*\)\.o[ 	]*:/\1.lo \1.o :/' \
-	< .deps/$(*F).pp > .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm -f .deps/$(*F).pp
 info-am:
 info: info-recursive
 dvi-am:
@@ -664,32 +661,31 @@ distclean-generic:
 
 maintainer-clean-generic:
 mostlyclean-am:  mostlyclean-binPROGRAMS mostlyclean-compile \
-	mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+	mostlyclean-libtool mostlyclean-tags \
 	mostlyclean-generic
 
 mostlyclean: mostlyclean-recursive
 
 #>- clean-am:  clean-binPROGRAMS clean-compile clean-libtool clean-tags \
-#>- clean-depend clean-generic mostlyclean-am
+#>- clean-generic mostlyclean-am
 #>+ 2
 clean-am: clean-metasources clean-ui clean-moc-classes clean-final   clean-binPROGRAMS clean-compile clean-libtool clean-tags \
-	clean-depend clean-generic mostlyclean-am
+	clean-generic mostlyclean-am
 
 #>- clean: clean-recursive
 #>+ 1
 clean: kde-rpo-clean  clean-recursive
 
 distclean-am:  distclean-binPROGRAMS distclean-compile distclean-libtool \
-	distclean-tags distclean-depend distclean-generic \
-	clean-am
+	distclean-tags distclean-generic clean-am
 	-rm -f libtool
 
 distclean: distclean-recursive
 
 maintainer-clean-am:  maintainer-clean-binPROGRAMS \
 	maintainer-clean-compile maintainer-clean-libtool \
-	maintainer-clean-tags maintainer-clean-depend \
-	maintainer-clean-generic distclean-am
+	maintainer-clean-tags maintainer-clean-generic \
+	distclean-am
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
@@ -705,12 +701,10 @@ maintainer-clean: maintainer-clean-recursive
 	all-recursive check-recursive installcheck-recursive info-recursive \
 	dvi-recursive mostlyclean-recursive distclean-recursive clean-recursive \
 	maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
-	distclean-tags clean-tags maintainer-clean-tags distdir \
-	mostlyclean-depend distclean-depend clean-depend \
-	maintainer-clean-depend info-am info dvi-am dvi check check-am \
-	installcheck-am installcheck install-exec-am install-exec \
-	install-data-local install-data-am install-data install-am install \
-	uninstall-local uninstall-am uninstall all-redirect all-am all \
+	distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
+	dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+	install-exec install-data-local install-data-am install-data install-am \
+	install uninstall-local uninstall-am uninstall all-redirect all-am all \
 	installdirs-am installdirs mostlyclean-generic distclean-generic \
 	clean-generic maintainer-clean-generic clean mostlyclean distclean \
 	maintainer-clean
@@ -817,7 +811,7 @@ docs-am:
 
 #>+ 5
 force-reedit:
-		cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/Makefile
+		cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/Makefile
 	cd $(top_srcdir) && perl admin/am_edit mycdcatalog/Makefile.in
 
 
@@ -839,7 +833,7 @@ clean-moc-classes:
 	-rm -f  mycdcatalog_meta_unload.cpp
 
 #>+ 11
-mycdcatalog.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/mp3lyrics.cpp $(srcdir)/mp3apic.cpp $(srcdir)/mp3popm.cpp $(srcdir)/mp3geob.cpp $(srcdir)/pdfhandler.cpp $(srcdir)/mp3handler.cpp $(srcdir)/mp3_id3.cpp $(srcdir)/mp3_header.cpp $(srcdir)/filehandlerfactory.cpp $(srcdir)/filehandler.cpp $(srcdir)/waitthread.cpp $(srcdir)/volume.cpp $(srcdir)/traverser.cpp $(srcdir)/sqlmanager.cpp $(srcdir)/showerror.cpp $(srcdir)/session.cpp $(srcdir)/resultsview.cpp $(srcdir)/results.cpp $(srcdir)/restart.cpp $(srcdir)/mounter.cpp $(srcdir)/initializer.cpp $(srcdir)/initform.cpp $(srcdir)/filetype.cpp $(srcdir)/file.cpp $(srcdir)/dirfile.cpp $(srcdir)/directory.cpp $(srcdir)/closer.cpp $(srcdir)/cfgmanager.cpp $(srcdir)/cfg.cpp $(srcdir)/cdreader.cpp $(srcdir)/main.cpp $(srcdir)/SResView.cpp $(srcdir)/SInitForm.cpp $(srcdir)/mycdcatalog_meta_unload.cpp  resultsview.moc.cpp results.moc.cpp
+mycdcatalog.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/mp3lyrics.cpp $(srcdir)/mp3apic.cpp $(srcdir)/mp3popm.cpp $(srcdir)/mp3geob.cpp $(srcdir)/pdfhandler.cpp $(srcdir)/mp3handler.cpp $(srcdir)/mp3_id3.cpp $(srcdir)/mp3_header.cpp $(srcdir)/filehandlerfactory.cpp $(srcdir)/filehandler.cpp $(srcdir)/waitthread.cpp $(srcdir)/volume.cpp $(srcdir)/traverser.cpp $(srcdir)/sqlmanager.cpp $(srcdir)/showerror.cpp $(srcdir)/session.cpp $(srcdir)/resultsview.cpp $(srcdir)/results.cpp $(srcdir)/restart.cpp $(srcdir)/mounter.cpp $(srcdir)/initializer.cpp $(srcdir)/initform.cpp $(srcdir)/filetype.cpp $(srcdir)/file.cpp $(srcdir)/dirfile.cpp $(srcdir)/directory.cpp $(srcdir)/closer.cpp $(srcdir)/cfgmanager.cpp $(srcdir)/cfg.cpp $(srcdir)/cdreader.cpp $(srcdir)/main.cpp $(srcdir)/SResView.cpp $(srcdir)/SInitForm.cpp mycdcatalog_meta_unload.cpp  resultsview.moc.cpp results.moc.cpp
 	@echo 'creating mycdcatalog.all_cpp.cpp ...'; \
 	rm -f mycdcatalog.all_cpp.files mycdcatalog.all_cpp.final; \
 	echo "#define KDE_USE_FINAL 1" >> mycdcatalog.all_cpp.final; \

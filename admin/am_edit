@@ -1926,7 +1926,7 @@ sub updateMakefile ()
     open (FILEOUT, "> $makefile")
                         || die "Could not create $makefile: $!\n";
 
-    print FILEOUT "\# $progId - " . '$Revision: 1.1.1.1 $ '  . "\n";
+    print FILEOUT "\# $progId - " . '$Revision: 1.305 $ '  . "\n";
     $MakefileData =~ s/\034/\\\n\t/g;    # Restore continuation lines
     print FILEOUT $MakefileData;
     close FILEOUT;

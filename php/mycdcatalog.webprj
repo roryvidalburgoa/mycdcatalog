@@ -1,0 +1,24 @@
+<!DOCTYPE webproject>
+<webproject>
+ <project preview="" type="Local" name="mycdcatalog" >
+  <upload/>
+  <author>Rory Vidal</author>
+  <email>roryvidal@yahoo.fr</email>
+  <item url="mycdcatalog.webprj" />
+  <item url="volume.php" />
+  <item url="directory.php" />
+  <item url="files.php" />
+  <item url="mycdcatalog.inc.php" />
+  <item url="mysql_image.php" />
+  <item url="mysql_table.php" />
+  <item url="volume_rootdir.php" />
+  <item url="mp3file_old.php" />
+  <item url="search.php" />
+  <item url="types_extensions.php" />
+  <item url="types_extensions.inc.php" />
+  <item url="mp3file.php" />
+  <item url="mp3handler.inc.php" />
+  <item url="style.css" />
+  <item url="test_php.php" />
+ </project>
+</webproject>

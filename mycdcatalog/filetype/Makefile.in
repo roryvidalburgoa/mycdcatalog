@@ -1,4 +1,4 @@
-# KDE tags expanded automatically by am_edit - $Revision: 1.1.1.1 $ 
+# KDE tags expanded automatically by am_edit - $Revision: 1.305 $ 
 # Makefile.in generated automatically by automake 1.4-p5 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
@@ -270,19 +270,13 @@ DIST_COMMON =  README Makefile.am Makefile.in acinclude.m4 configure \
 
 #>- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 #>+ 4
-KDE_DIST=PORTING Header aclocal.m4 patchlevel.h acconfig.h Makefile.std libfiletype.a magic.man Localstuff file.man magic2mime MAINT MakefileCONFIG_HEADERS= 
+KDE_DIST=PORTING aclocal.m4 Makefile.std acconfig.h libfiletype.a file.man MakefileCONFIG_HEADERS= Header patchlevel.h magic.man Localstuff magic2mime MAINT 
 
 DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
 
 
 TAR = gtar
 GZIP_ENV = --best
-#>- DEP_FILES =  .deps/apprentice.P .deps/ascmagic.P .deps/file.P \
-#>- .deps/is_tar.P .deps/print.P .deps/softmagic.P
-#>+ 3
-DEP_FILES =    .deps/apprentice.P .deps/ascmagic.P .deps/file.P \
-	.deps/is_tar.P .deps/print.P .deps/softmagic.P
-
 SOURCES = $(libfiletype_a_SOURCES)
 OBJECTS = $(libfiletype_a_OBJECTS)
 
@@ -292,12 +286,12 @@ all: docs-am  all-redirect
 .SUFFIXES:
 .SUFFIXES: .S .c .lo .o .obj .s
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/filetype/Makefile
+#>- 	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/filetype/Makefile
 #>+ 2
-	cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/filetype/Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/filetype/Makefile
 	cd $(top_srcdir) && perl admin/am_edit mycdcatalog/filetype/Makefile.in
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	&& CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -310,6 +304,9 @@ clean-noinstLIBRARIES:
 distclean-noinstLIBRARIES:
 
 maintainer-clean-noinstLIBRARIES:
+
+.c.o:
+	$(COMPILE) -c $<
 
 # FIXME: We should only use cygpath when building on Windows,
 # and only if it is available.
@@ -332,6 +329,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 maintainer-clean-compile:
+
+.c.lo:
+	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
 
 .s.lo:
 	$(LIBTOOL) --mode=compile $(COMPILE) -c $<
@@ -448,11 +448,6 @@ distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
 subdir = mycdcatalog/filetype
 
 distdir: $(DISTFILES)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(top_distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	&& $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu mycdcatalog/filetype/Makefile
 	@for file in $(DISTFILES); do \
 	d=$(srcdir); \
 	if test -d $$d/$$file; then \
@@ -473,38 +468,13 @@ distdir: $(DISTFILES)
 	|| exit 1; \
 	fi; \
 	done
+apprentice.o: apprentice.c file.h config.h
+ascmagic.o: ascmagic.c file.h config.h names.h
+file.o: file.c file.h config.h
+is_tar.o: is_tar.c tar.h file.h config.h
+print.o: print.c file.h config.h
+softmagic.o: softmagic.c file.h config.h
 
-DEPS_MAGIC := $(shell mkdir .deps > /dev/null 2>&1 || :)
-
--include $(DEP_FILES)
-
-mostlyclean-depend:
-
-clean-depend:
-
-distclean-depend:
-	-rm -rf .deps
-
-maintainer-clean-depend:
-
-%.o: %.c
-	@echo '$(COMPILE) -c $<'; \
-	$(COMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-cp .deps/$(*F).pp .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm .deps/$(*F).pp
-
-%.lo: %.c
-	@echo '$(LTCOMPILE) -c $<'; \
-	$(LTCOMPILE) -Wp,-MD,.deps/$(*F).pp -c $<
-	@-sed -e 's/^\([^:]*\)\.o[ 	]*:/\1.lo \1.o :/' \
-	< .deps/$(*F).pp > .deps/$(*F).P; \
-	tr ' ' '\012' < .deps/$(*F).pp \
-	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
-	>> .deps/$(*F).P; \
-	rm -f .deps/$(*F).pp
 info-am:
 info: info-recursive
 dvi-am:
@@ -542,29 +512,29 @@ distclean-generic:
 
 maintainer-clean-generic:
 mostlyclean-am:  mostlyclean-noinstLIBRARIES mostlyclean-compile \
-	mostlyclean-libtool mostlyclean-tags mostlyclean-depend \
+	mostlyclean-libtool mostlyclean-tags \
 	mostlyclean-generic
 
 mostlyclean: mostlyclean-recursive
 
 clean-am:  clean-noinstLIBRARIES clean-compile clean-libtool clean-tags \
-	clean-depend clean-generic mostlyclean-am
+	clean-generic mostlyclean-am
 
 #>- clean: clean-recursive
 #>+ 1
 clean: kde-rpo-clean  clean-recursive
 
 distclean-am:  distclean-noinstLIBRARIES distclean-compile \
-	distclean-libtool distclean-tags distclean-depend \
-	distclean-generic clean-am
+	distclean-libtool distclean-tags distclean-generic \
+	clean-am
 	-rm -f libtool
 
 distclean: distclean-recursive
 
 maintainer-clean-am:  maintainer-clean-noinstLIBRARIES \
 	maintainer-clean-compile maintainer-clean-libtool \
-	maintainer-clean-tags maintainer-clean-depend \
-	maintainer-clean-generic distclean-am
+	maintainer-clean-tags maintainer-clean-generic \
+	distclean-am
 	@echo "This command is intended for maintainers to use;"
 	@echo "it deletes files that may require special tools to rebuild."
 
@@ -580,14 +550,12 @@ maintainer-clean: maintainer-clean-recursive
 	all-recursive check-recursive installcheck-recursive info-recursive \
 	dvi-recursive mostlyclean-recursive distclean-recursive clean-recursive \
 	maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
-	distclean-tags clean-tags maintainer-clean-tags distdir \
-	mostlyclean-depend distclean-depend clean-depend \
-	maintainer-clean-depend info-am info dvi-am dvi check check-am \
-	installcheck-am installcheck install-exec-am install-exec \
-	install-data-am install-data install-am install uninstall-am uninstall \
-	all-redirect all-am all installdirs-am installdirs mostlyclean-generic \
-	distclean-generic clean-generic maintainer-clean-generic clean \
-	mostlyclean distclean maintainer-clean
+	distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
+	dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+	install-exec install-data-am install-data install-am install \
+	uninstall-am uninstall all-redirect all-am all installdirs-am \
+	installdirs mostlyclean-generic distclean-generic clean-generic \
+	maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
 ####### kdevelop will overwrite this part!!! (end)############
@@ -601,7 +569,7 @@ docs-am:
 
 #>+ 5
 force-reedit:
-		cd $(top_srcdir) && $(AUTOMAKE) --gnu mycdcatalog/filetype/Makefile
+		cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps mycdcatalog/filetype/Makefile
 	cd $(top_srcdir) && perl admin/am_edit mycdcatalog/filetype/Makefile.in
 
 

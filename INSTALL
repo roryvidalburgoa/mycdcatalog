@@ -10,6 +10,8 @@ Easy Installation
 
 %	make install
 
+Into the directory ./mycdcatalog/php I added some scripts to parse the database.
+
 
 Basic Installation
 ==================

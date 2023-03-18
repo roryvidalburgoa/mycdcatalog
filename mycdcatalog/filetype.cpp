@@ -51,18 +51,8 @@ Return changed string. */
 	code.replace(QRegExp("\""), "\\\"");
 	description.replace(QRegExp("\""), "\\\"");
 
-  if (code == "")
-    if (description == "") {
-      code = "data";
-      description = "Unknown";
-    } else {
-      code = description;
-    }
-
 	acode[0] = 0;
 	adesc[0] = 0;
-
-  //cout << aFile << ": <" << code << "> <" << description << ">" << endl;
 	return ret;
 }
 
@@ -86,7 +76,6 @@ int FileType::readMagic(){
 
 		int action = 0;
 		int ret = apprentice(magicfile.latin1(), action);
-    //cout << "MAGIC: " << magicfile << " has been read" << endl;
 		if (action)
 			return ret;
 		else return action;

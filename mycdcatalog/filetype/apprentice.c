@@ -42,7 +42,7 @@
 #endif
 
 #ifndef	lint
-FILE_RCSID("@(#)$Id: apprentice.c,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $")
+FILE_RCSID("@(#)$Id: apprentice.c,v 1.44 2001/08/01 14:03:19 christos Exp $")
 #endif	/* lint */
 
 #define	EATAB {while (isascii((unsigned char) *l) && \

@@ -3,15 +3,9 @@
 
 /*
  * Patchlevel file for Ian Darwin's MAGIC command.
- * $Id: patchlevel.h,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $
+ * $Id: patchlevel.h,v 1.37 2001/09/03 14:44:22 christos Exp $
  *
  * $Log: patchlevel.h,v $
- * Revision 1.1.1.1  2002/10/02 19:51:33  rory_vidal
- * First Release of SOURCES.
- *
- * Revision 1.1.1.1  2002/10/02 18:24:13  rory_vidal
- * First release of mycdcatalog on CVS.
- *
  * Revision 1.37  2001/09/03 14:44:22  christos
  * daylight/tm_isdst detection
  * magic fixes

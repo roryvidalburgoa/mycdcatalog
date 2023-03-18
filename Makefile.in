@@ -1,4 +1,4 @@
-# KDE tags expanded automatically by am_edit - $Revision: 1.1.1.1 $ 
+# KDE tags expanded automatically by am_edit - $Revision: 1.305 $ 
 # Makefile.in generated automatically by automake 1.4-p5 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
@@ -248,7 +248,7 @@ DIST_COMMON =  README ./stamp-h.in AUTHORS COPYING ChangeLog INSTALL \
 
 #>- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 #>+ 4
-KDE_DIST=Makefile.dist subdirs configure.in.in mycdcatalog.kdevses makeall mycdcatalog.xpm AC_FD_MSG messages.log mycdcatalog.doxygen AC_FD_CC configure.files 
+KDE_DIST=Makefile.dist subdirs configure.in.in makeall mycdcatalog.kdevses mycdcatalog.xpm AC_FD_MSG messages.log mycdcatalog.doxygen configure.files AC_FD_CC 
 
 DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
 
@@ -260,12 +260,12 @@ GZIP_ENV = --best
 all: docs-am  all-redirect
 .SUFFIXES:
 $(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
-#>- 	cd $(top_srcdir) && $(AUTOMAKE) --foreign ./Makefile
+#>- 	cd $(top_srcdir) && $(AUTOMAKE) --foreign --include-deps ./Makefile
 #>+ 2
-	cd $(top_srcdir) && $(AUTOMAKE) --foreign ./Makefile
+	cd $(top_srcdir) && $(AUTOMAKE) --foreign --include-deps ./Makefile
 	cd $(top_srcdir) && perl admin/am_edit Makefile.in
 
-Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status $(BUILT_SOURCES)
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	&& CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
@@ -432,11 +432,6 @@ distdir: $(DISTFILES)
 	-rm -rf $(distdir)
 	mkdir $(distdir)
 	-chmod 777 $(distdir)
-	here=`cd $(top_builddir) && pwd`; \
-	top_distdir=`cd $(distdir) && pwd`; \
-	distdir=`cd $(distdir) && pwd`; \
-	cd $(top_srcdir) \
-	&& $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --foreign ./Makefile
 	@for file in $(DISTFILES); do \
 	d=$(srcdir); \
 	if test -d $$d/$$file; then \
@@ -562,7 +557,7 @@ docs-am:
 
 #>+ 5
 force-reedit:
-		cd $(top_srcdir) && $(AUTOMAKE) --foreign ./Makefile
+		cd $(top_srcdir) && $(AUTOMAKE) --foreign --include-deps ./Makefile
 	cd $(top_srcdir) && perl admin/am_edit Makefile.in
 
 

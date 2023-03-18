@@ -11,7 +11,7 @@ Url:       http://mycdcatalog.sourceforge.net
 
 Packager:  Rory Vidal <roryvidal@yahoo.fr>
 Group:     Applications
-Source:    mycdcatalog-0.3.tar.gz
+Source:    mycdcatalog-0.3.tar.bz2
 BuildRoot: building
 
 %description
