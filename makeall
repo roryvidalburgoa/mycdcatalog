@@ -1,0 +1,15 @@
+#!/bin/sh
+make -f admin/Makefile.common
+./configure --enable-mt
+
+# or try this :
+# ./configure --build=i386-linux --host=i386-linux --target=i386-linux --prefix=/usr --with-qt-dir=/usr/lib/qt-3.0.3/ --enable-mt
+
+make
+
+# test
+#./mycdcatalog/mycdcatalog
+
+# install
+#make install
+

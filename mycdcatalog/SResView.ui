@@ -1,0 +1,350 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>SResView</class>
+<comment>Super clas of ResultsView
+Shows the partial results when reading
+the CDROM and final results when read
+is finished.</comment>
+<author>Rory Vidal</author>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>SResView</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>33</x>
+            <y>44</y>
+            <width>450</width>
+            <height>320</height>
+        </rect>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>450</width>
+            <height>320</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>MyCDCatalog: Reading CDROM ...</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <property name="mouseTracking">
+        <bool>false</bool>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>false</bool>
+    </property>
+    <property name="toolTip" stdset="0">
+        <string>Author: Rory Vidal &lt;roryvidal@yahoo.fr&gt;</string>
+    </property>
+    <property name="whatsThis" stdset="0">
+        <string>Reading a CDROM Volume.</string>
+    </property>
+    <widget class="QLayoutWidget">
+        <property name="name">
+            <cstring>Layout8</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>450</width>
+                <height>310</height>
+            </rect>
+        </property>
+        <vbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <property name="margin">
+                <number>0</number>
+            </property>
+            <property name="spacing">
+                <number>6</number>
+            </property>
+            <widget class="QTextView">
+                <property name="name">
+                    <cstring>VolumeData</cstring>
+                </property>
+                <property name="frameShape">
+                    <enum>StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Sunken</enum>
+                </property>
+                <property name="textFormat">
+                    <enum>RichText</enum>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Volume's Information.</string>
+                </property>
+                <property name="whatsThis" stdset="0">
+                    <string>Volume's Information.</string>
+                </property>
+            </widget>
+            <widget class="Line">
+                <property name="name">
+                    <cstring>LineSeparator</cstring>
+                </property>
+                <property name="frameShape">
+                    <enum>HLine</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Sunken</enum>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>Layout7</cstring>
+                </property>
+                <hbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>6</number>
+                    </property>
+                    <spacer>
+                        <property name="name">
+                            <cstring>SpacerL1</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Fixed</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>16</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>currentDirFile</cstring>
+                        </property>
+                        <property name="focusPolicy">
+                            <enum>TabFocus</enum>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                        <property name="textFormat">
+                            <enum>RichText</enum>
+                        </property>
+                        <property name="toolTip" stdset="0">
+                            <string>Current File or Directory</string>
+                        </property>
+                    </widget>
+                    <spacer>
+                        <property name="name">
+                            <cstring>SpacerR1</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Fixed</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>16</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </hbox>
+            </widget>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>Layout5</cstring>
+                </property>
+                <hbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>6</number>
+                    </property>
+                    <widget class="QProgressBar">
+                        <property name="name">
+                            <cstring>aProgressBar</cstring>
+                        </property>
+                        <property name="maximumSize">
+                            <size>
+                                <width>410</width>
+                                <height>32767</height>
+                            </size>
+                        </property>
+                        <property name="cursor">
+                            <cursor>0</cursor>
+                        </property>
+                        <property name="focusPolicy">
+                            <enum>TabFocus</enum>
+                        </property>
+                        <property name="centerIndicator">
+                            <bool>true</bool>
+                        </property>
+                        <property name="indicatorFollowsStyle">
+                            <bool>true</bool>
+                        </property>
+                        <property name="toolTip" stdset="0">
+                            <string>Progress</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>rate</cstring>
+                        </property>
+                        <property name="maximumSize">
+                            <size>
+                                <width>100</width>
+                                <height>32767</height>
+                            </size>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                </hbox>
+            </widget>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>Layout2</cstring>
+                </property>
+                <hbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>6</number>
+                    </property>
+                    <spacer>
+                        <property name="name">
+                            <cstring>SpacerL</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QPushButton">
+                        <property name="name">
+                            <cstring>Stop</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Stop</string>
+                        </property>
+                        <property name="toolTip" stdset="0">
+                            <string>Stop</string>
+                        </property>
+                    </widget>
+                    <spacer>
+                        <property name="name">
+                            <cstring>SpacerC</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QPushButton">
+                        <property name="name">
+                            <cstring>Cancel</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Cancel</string>
+                        </property>
+                        <property name="accel">
+                            <number>276824131</number>
+                        </property>
+                        <property name="toolTip" stdset="0">
+                            <string>Cancel</string>
+                        </property>
+                    </widget>
+                    <spacer>
+                        <property name="name">
+                            <cstring>SpacerR</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </hbox>
+            </widget>
+        </vbox>
+    </widget>
+</widget>
+<images>
+    <image name="image0">
+        <data format="XPM.GZ" length="2782">789c7d95d97215371086effd14a7e83b2ad5cc8c465ba57281c178c32b9b21958b9634836db00df6b18da1f2ee19fd3d1410484e9f9bafd423f5f2abf5e0fee2687f6771ffc1cad552962779918fe57271bf5c9f9dddfdf9d71f5f56eeb56e51ffc62eba7bbfaddc3b582ef262f7e27ca840cd04d477bd6f7bf00db8b8d025f02178b0a173e0756567ba087e0b1e6d34d89c4265eb6dec2df8cdcc63abdfbf5476ad09e053b0f8763e2f82932dbdb207173bf419dc8207d7f57afeabcaae776234fed760eb4aabfe47607163d7809f82932f5da9cc88d7e5d0683e6cc1831f7a03ffcfcac119f893abec1bdf39cde7a1726c3bcdff16dc7971c89f7be5d8741acf3bb0f1d9215e3e520ebe1bb17e0d9eca679437c0ce17a7df9f2887dc7bf036380463514f6170f4e235df4159fa16f9f00bb084685bf0f3994b0f3df00e38056f35ff8399a3c17eecbeb245be8cfef812068d87d13f3f04ebb4bf23788c63a7f530cae25aad37f4109a90acf6ef5839b67a3ea35fa10dc56abf2fc0468cea85d1ffd047d3ebf74fc03e0e5a3f7e064e3218d5e307e56467bd9799fd5c1fe827e4d8798d6f7b66eb34ffad99c5aa1e3e2a27a3f9909e576213a00f863ec218add77a64e5d4cef5e866ceadf266e5d84a3b9f07bdc72eb94efb7d0536e2e7fbb0047b19b59f84fec61873d07eaece5c82eafd4039377a5ff970e6d4aa3ff41e458ce64fb80f31c51255effb95a591d1a87e504f69a58f5a2ff4473a3151efc325d8a4d8ebf7e7e05e264982d3cc41f7e75df03410a2c683f9244ed2bcff1dd8cbe0b55ee8b78454546fbca19c8dd5f3d45fa488faa35f926510edc79e720a9a0fadce3cea7d678d77901c552f6bcad9e87c62adc7982645e2fe51e5d4a446f4fb75e522b3ff19b84d7d54fde0bea52eb556e3c3fd4f2605d1f3a08fd4279bb49ea84f0a533da107819ed2d4a0a4f9bf074b9a1409be51ce39203f41bd137ed86f6be69c505fc17d48c3641aff9a726e92f64bf71fab813f55ce4d6eb3ce1bcc9fdc6593555f8fc0fd641a0ff490ed649adfe6cc2eebfd7c0c76c55ad53fe647f6d5b08e799ac3643a6f30df72ac06c67b93a51a58e34bd97bb00c334f8675bc5f193fecaff10ec55b5dc7bccee364aac75be592bdaea35ea5a986ef314f4b5b0debb89fd363630aea2102eeabc15fd956833ff4585c3530e661f1d5c0e87749d5c0980765a80646fd86ae1af6c7bc1d4c35ace3fd18fa6a60bcbf83ad067fe87370d5c0d0f3f41c4e067fe86708d5c0887f88d5c0ea2fd52a1f2cffdf7ef66162f96f1f4e9cb9f0c023bfe5633ef9d9874ff91dbfe7333ee70bfec01ff992af7ef259f235dff02d7fe23bfecc0f79951fe95e5f7df831aff1135ee70ddee42ddee6a7bcc3bbbcf7834fe67d3ee0437ec6cff905bfe4577cc4aff9cd0f3e7bdc70cb1d1beed9b263cf812331d1371f124a94a9d04023bda5633aa1537a47efe9ecfb7de89c2ee8037da44bbaa2255dd30dddd2a71f7c32ddd1677a48abf4881ed31a3da175daa04d4edfe7455bb44d4f698776698ff6e9800ee9193dff577d0abda097f48a8ee835bda1865aeab48adf7cc8504f961c790ad383c14224bfe8d7a9085fca3480a6093c4c15a35ff79d1399a9e6a75fd7e1f3f7ef2bff00090e8432</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>Stop</sender>
+        <signal>clicked()</signal>
+        <receiver>SResView</receiver>
+        <slot>stop_resume_slot()</slot>
+    </connection>
+    <connection>
+        <sender>Cancel</sender>
+        <signal>clicked()</signal>
+        <receiver>SResView</receiver>
+        <slot>cancel_slot()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>aProgressBar</tabstop>
+    <tabstop>Stop</tabstop>
+    <tabstop>Cancel</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in implementation">SResView.ui.h</include>
+</includes>
+<slots>
+    <slot>cancel_slot()</slot>
+    <slot>stop_resume_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

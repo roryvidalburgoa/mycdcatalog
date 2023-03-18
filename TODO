@@ -1,0 +1,25 @@
+How to know if it's a MultiSession CD ?
+Read and mount all sessions in a CD. Only last session for now.
+When reading a CDROM info, the first session is read, it needs to be
+the last one.
+
+Make a nice interface for searching into the created Database, I've think
+in PHP for make this interface. By now you can use "phpMyAdmin"
+(http://www.phpwizard.net/projects/phpMyAdmin/) for see your row tables.
+
+When finding an incomplete CDROM, resuming the reading, by now it only deletes
+the incomplete information about a CDROM.
+
+Give the possibility to change the Volume ID if it exists into DB and the volume
+is a new volume.
+
+Create the DB if it doesn't exists yet.
+
+Some options like the MAGIC file to use.
+
+A true plugin system using *.so files for dynamic loading.
+
+Add new File Handlers, for files like PDF or AVI , etc. These file handlers
+may take info about that file types.
+
+And many other things to do yet!!!

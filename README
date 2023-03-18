@@ -1,0 +1,181 @@
+AUTHOR
+======
+
+Rory Vidal <rory.vidal@yahoo.com>
+
+
+DESCRIPTION
+===========
+
+MyCDCatalog is a simple KDE2 application.
+
+MyCDCatalog reads a CDROM volume (ISO9660) takes its information, traverses
+the file system tree and stores information about each file and directory
+found. CDROM, file and directory information are stored in a MySQL database
+for future use.
+
+MyCDCatalog shows the options, in order to mount the CDROM, read
+it recursively, and connect to a MySQL server. Then it required the mysql connection data.
+
+MyCDCatalog is able to use file handlers, because it identifies file types using the
+UNIX tool "file". Currently only MP3 files have their handler to retreive information.
+
+REQUIREMENTS
+============
+
+Of course you need to have access to the MySQL server.
+	At least:
+	- MySQL v3.23
+	- mysql++ v1.7.9
+	- KDE v2.1.2
+	- qt v2.3
+
+MP3 Handler, needs:
+	At Least:
+	- ID3Lib v3.7.13
+
+
+INSTALLATION
+============
+
+See INSTALL file for general installation.
+
+This application needs to have a database in the server with some tables
+created, this is done by using the file "mycdcatalog.sql". The procedure for
+create the DB tables is:
+
+   Using the mysql client (or other):
+      %> CREATE DATABASE aDatabase;
+
+      %> mysql -u aUsername -p aDataBase < mycdcatalog.sql
+         aDataBase need to exists before executing this command.
+
+After creating the DB and their tables, just use MyCDCatalog: fill the initial
+form of options. Then an other widget will appear showing you the progress of
+reading process with info about the CDROM, when that process has finished a
+table with final results will be showed.
+
+The file "mycdcatalog.sql" describes the kind of information to store for a
+CDROM, a file and a directory.
+
+An example of a Volume (a CDROM) row into DB:
++----+--------+--------+--------+----------+----------+-----------+--------+---------+-------------+--------------+--------+----------+
+| id | vol_id | sys_id | pub_id | preparer | app_id   | size      | nbdirs | nbfiles | unread_dirs | unread_files | status | complete |
++----+--------+--------+--------+----------+----------+-----------+--------+---------+-------------+--------------+--------+----------+
+|  3 | APPS   | LINUX  | ME     | YOU		   | CDRECORD | 712980480 |     14 |     184 |           0 |            0 |      1 |        1 |
++----+--------+--------+--------+----------+----------+-----------+--------+---------+-------------+--------------+--------+----------+
+
+A Dir Row:
++----+---------+-------------+-------------+-------------+--------+-------+
+| id | path    | date_lmodif | date_access | nb_dirfiles | father | cdrom |
++----+---------+-------------+-------------+-------------+--------+-------+
+| 39 | ./RPMS  |         116 |         115 |         475 |     38 |     3 |
++----+---------+-------------+-------------+-------------+--------+-------+
+
+A File row:
++------+---------------------------+-------------+-------------+---------+------+-----+---------+-------+
+| id   | name                      | date_lmodif | date_access | size    | type | ext | dirpath | cdrom |
++------+---------------------------+-------------+-------------+---------+------+-----+---------+-------+
+| 1420 | kdevelop-1.4.1-2.i386.rpm |        1221 |        1222 | 3304452 |    8 |  11 |      39 |     3 |
++------+---------------------------+-------------+-------------+---------+------+-----+---------+-------+
+
+A DateTime row:
++------+---------------------+
+| id   | dt                  |
++------+---------------------+
+| 1221 | 2001-04-08 21:34:01 |
++------+---------------------+
+
+A Type row:
++----+----------+-------------+
+| id | code     | description |
++----+----------+-------------+
+|  8 | ffffeedb | RPM         |
++----+----------+-------------+
+
+An Extension row:
++----+------+
+| id | name |
++----+------+
+| 11 | rpm  |
++----+------+
+
+Because there are many system call like mount, umount, etc. that only a root
+user can use, this software will work only with "root".
+I designed this only for my needs, but after a while I decided to share it,
+hoping to be useful, I don't designed it to be a multiplataform application,
+I work with a LINUX system and use features of that kernel when accessing
+the cdrom drive.
+
+The MP3 Handler uses new tables for MP3 information, the file mp3handler.sql
+has the definition of that tables. ID3v1 and ID3v2 are stored, also MPEG information
+to know duration in time of MP3 files and other useful information.
+
+
+LICENSE
+=======
+Please read the COPYING file.
+
+
+REFERENCES AND THANKS
+=====================
+
+Well, in order to read a CDROM information (i.e. ISO9660 Volume information)
+I used some source code from the "cdrtools-1.10" source distribution 
+(Author: Jörg Schilling).
+	http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html
+
+For connecting to a MySQL server and make SQL requests I used the C++ API
+library "mysql++-1.7.9"
+(Author: kevinatk@home.com).
+	http://www.mysql.com/downloads/index.html
+
+The MP3 handler use library ID3 v3.7.13 for retreive ID3 tags V1 and V2:
+	http://sourceforge.net/project/?group_id=979 or
+	http://id3lib.sourceforge.net
+
+For retreive data from the MPEG headers I modified code from EasyTag v0.15
+	http://easytag.sourceforge.net
+
+For detecting the file type I modified the source distribution
+of "file-3.37-5" (Author: Ian F. Darwin) that use magic files.
+
+Because I haven't yet a good documentation I add here the "file-3.37-5"
+legal notice:
+
+###########################################################################
+$Id: README,v 1.1.1.1 2002/10/02 19:51:33 rory_vidal Exp $
+Copyright (c) Ian F. Darwin 1986, 1987, 1989, 1990, 1991, 1992, 1994, 1995.
+Software written by Ian F. Darwin and others;
+maintained 1994-1999 Christos Zoulas.
+
+This software is not subject to any export provision of the United States
+Department of Commerce, and may be exported to any country or planet.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice immediately at the beginning of the file, without modification,
+   this list of conditions, and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software
+   must display the following acknowledgement:
+   This product includes software developed by Ian F. Darwin and others.
+4. The name of the author may not be used to endorse or promote products
+   derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+###########################################################################

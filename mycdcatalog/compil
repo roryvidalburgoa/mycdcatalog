@@ -1,0 +1,12 @@
+g++ -DHAVE_CONFIG_H -I. -I. -I.. -I/usr/local/kde/include -I/usr/lib/qt-2.3.0/include -DQT_THREAD_SUPPORT -pthread -fno-exceptions -fno-check-new -Wall -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -Wno-long-long -Wnon-virtual-dtor -fno-builtin  -Wall -fexceptions -I/usr/include/mysql -c thread.cpp
+
+g++ -fno-exceptions -fno-check-new -Wall -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -Wno-long-long -Wnon-virtual-dtor -fno-builtin -Wall -fexceptions -I/usr/include/mysql -o thread thread.o -L/usr/lib/mysql -L/usr/local/lib -L/usr/lib/qt-2.3.0/lib -L/usr/lib  /usr/lib/libksycoca.so /usr/lib/libkio.so -L/usr/lib/gcc-lib/i386-redhat-linux/2.96 -L/usr/lib/gcc-lib/i386-redhat-linux/2.96/../../.. -lutil /usr/lib/libkdeui.so -ldl /usr/lib/libDCOP.so -lstdc++ -lc -lgcc -lqt-mt -lpng -lz -lm /usr/lib/libjpeg.so -Wl,--rpath -Wl,/usr/local/lib -Wl,--rpath -Wl,/usr/local/lib -Wl,--rpath -Wl,/usr/lib -Wl,--rpath -Wl,/usr/lib/qt-2.3.0/lib -Wl,--rpath
+
+./thread
+
+#g++ -c -I. -I.. -I/usr/lib/qt-2.3.0/include -I/usr/local/kde/include -pipe -O2 -march=i686 -fno-exceptions -DQT_THREAD_SUPPORT -pthread -o thread.o thread.cpp
+
+#g++ -L/usr/lib/qt-2.3.0/lib -Wl,-rpath,/usr/lib/qt-2.3.0/lib -o ./thread thread.o -lqt-mt -lkdeui
+
+#compil myapp
+#g++ -O2 -fno-exceptions -fno-check-new -Wall -Wpointer-arith -Wmissing-prototypes -Wwrite-strings -Wno-long-long -Wnon-virtual-dtor -fno-builtin -O0 -g3 -Wall -I/usr/include/mysql -fexceptions -o mycdcatalog waitthread.o volume.o traverser.o sqlmanager.o showerror.o session.o resultsview.o results.o restart.o mounter.o initializer.o initform.o filetype.o file.o dirfile.o directory.o closer.o cfgmanager.o cfg.o cdreader.o mycdcatalog.o main.o SResView.o SInitForm.o resultsview.moc.o mycdcatalog.moc.o results.moc.o mycdcatalog_meta_unload.o -L/usr/lib/mysql -L/usr/local/lib -L/usr/X11R6/lib -L/usr/lib/qt-2.3.0/lib -L/usr/lib ./filetype/libfiletype.a /usr/local/lib/libsqlplus.so -lmysqlclient -lqt-mt /usr/lib/libkfile.so /usr/lib/libksycoca.so /usr/lib/libkio.so -L/usr/lib/gcc-lib/i386-redhat-linux/2.96 -L/usr/lib/gcc-lib/i386-redhat-linux/2.96/../../.. /usr/lib/libkdesu.so -lutil /usr/lib/libkdeui.so /usr/lib/libkdecore.so /usr/lib/libkdefakes.so -ldl /usr/lib/libDCOP.so -lpng -lz /usr/lib/libjpeg.so -lXext -lX11 -lSM -lICE -lstdc++ -lm -lc -lgcc -Wl,--rpath -Wl,/usr/local/lib -Wl,--rpath -Wl,/usr/local/lib -Wl,--rpath -Wl,/usr/lib -Wl,--rpath -Wl,/usr/lib/qt-2.3.0/lib -Wl,--rpath -Wl,/usr/X11R6/lib

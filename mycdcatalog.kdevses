@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE KDevPrjSession>
+<KDevPrjSession>
+ <LastCompileConfig>(Default)</LastCompileConfig>
+ <Mainframe MaximizeMode="1" />
+ <DocsAndViews NumberOfDocuments="6" >
+  <Doc0 CursorPosLine="50" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/sqlmanager.h" >
+   <View0 Top="25" Width="400" Attach="1" Height="300" Left="3" Focus="0" Type="KWriteView" MinMaxMode="0" />
+  </Doc0>
+  <Doc1 CursorPosLine="206" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/sqlmanager.cpp" >
+   <View0 Top="48" Width="819" Attach="1" Height="410" Left="26" Focus="0" Type="KWriteView" MinMaxMode="0" />
+  </Doc1>
+  <Doc2 CursorPosLine="31" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/filetype.h" >
+   <View0 Top="71" Width="819" Attach="1" Height="410" Left="49" Focus="0" Type="KWriteView" MinMaxMode="0" />
+  </Doc2>
+  <Doc3 CursorPosLine="60" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/filetype.cpp" >
+   <View0 Top="69" Width="825" Attach="1" Height="438" Left="69" Focus="1" Type="KWriteView" MinMaxMode="2" />
+  </Doc3>
+  <Doc4 CursorPosLine="166" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/filetype/file.c" >
+   <View0 Top="117" Width="819" Attach="1" Height="410" Left="95" Focus="0" Type="KWriteView" MinMaxMode="0" />
+  </Doc4>
+  <Doc5 CursorPosLine="212" Type="KWriteDoc" NumberOfViews="1" CursorPosCol="0" FileName="/root/mycdcatalog/mycdcatalog/filetype/softmagic.c" >
+   <View0 Top="140" Width="819" Attach="1" Height="410" Left="118" Focus="0" Type="KWriteView" MinMaxMode="0" />
+  </Doc5>
+ </DocsAndViews>
+</KDevPrjSession>

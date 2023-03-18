@@ -1,0 +1,5 @@
+./mycdcatalog-0.3/mycdcatalog has *.rc or *.ui files, but not correct messages line
+gmake[2]: Entering directory `/root/mycdcatalog/mycdcatalog-0.3/mycdcatalog'
+xgettext: error while opening "/include/kde.pot" for reading: No such file or directory
+gmake[2]: *** [messages] Error 1
+gmake[2]: Leaving directory `/root/mycdcatalog/mycdcatalog-0.3/mycdcatalog'

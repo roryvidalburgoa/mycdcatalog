@@ -1,0 +1,12 @@
+# KDE Config File  
+[Desktop Entry]
+Type=Application
+Exec=mycdcatalog -caption "%c" %i %m  
+Icon=mycdcatalog.png
+MiniIcon=mycdcatalog.png
+DocPath=mycdcatalog/index.html
+Comment=
+Comment[de]=
+Terminal=0
+Name=MyCDCatalog
+Name[de]=MyCDCatalog

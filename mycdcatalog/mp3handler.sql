@@ -1,0 +1,262 @@
+CREATE TABLE MP3APIC (
+  id smallint(5) unsigned NOT NULL auto_increment,
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  mimeType varchar(64) binary default NULL,
+  format varchar(16) binary default NULL,
+  picType varchar(16) binary default NULL,
+  description varchar(64) binary default NULL,
+  picSize mediumint(9) default NULL,
+  picture blob,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE MP3Album (
+  id smallint(5) unsigned NOT NULL auto_increment,
+  name varchar(96) binary default NULL,
+  PRIMARY KEY  (id),
+  KEY name (name)
+);
+
+CREATE TABLE MP3Artist (
+  id mediumint(8) unsigned NOT NULL auto_increment,
+  name varchar(96) binary default NULL,
+  PRIMARY KEY  (id),
+  KEY name (name)
+);
+
+CREATE TABLE MP3Comments (
+  id mediumint(8) unsigned NOT NULL auto_increment,
+  name text default NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE MP3GEOB (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  description varchar(128) binary default NULL,
+  fileName varchar(128) binary default NULL,
+  mimeType varchar(64) binary default NULL,
+  dataSize smallint(5) unsigned default NULL,
+  eobject blob
+);
+
+CREATE TABLE MP3Genres (
+  id tinyint(3) unsigned NOT NULL auto_increment,
+  name varchar(32) binary default NULL,
+  PRIMARY KEY  (id),
+  KEY name (name)
+);
+
+CREATE TABLE MP3Header (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  header_at mediumint(8) unsigned default NULL,
+  duration smallint(5) unsigned default NULL,
+  version enum('MPEG 1','MPEG 2','MPEG 2.5') default NULL,
+  layer enum('I','II','III') default NULL,
+  bitrate smallint(5) unsigned default NULL,
+  frequency enum('44100','48000','32000','22050','24000','16000','11025','12000','8000') default NULL,
+  mode enum('Stereo','Joint Stereo','Dual Channel','Single Channel','Multi Channel') default NULL,
+  protection enum('No','Yes') default NULL,
+  copyright enum('No','Yes') default NULL,
+  original enum('No','Yes') default NULL,
+  emphasis enum('None','50/15 ms','reserved','CCIT J.17') default NULL,
+  frames smallint(5) unsigned default NULL
+);
+
+CREATE TABLE MP3ID3 (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  title varchar(64) binary default NULL,
+  artist mediumint(8) unsigned default NULL,
+  album smallint(5) unsigned default NULL,
+  aYear year(4) default NULL,
+  track tinyint(3) unsigned default NULL,
+  genre tinyint(3) unsigned default NULL,
+  comment mediumint(8) unsigned default NULL,
+  v1Tag enum('No','Yes') default NULL,
+  v2Tag enum('No','Yes') default NULL,
+  frames tinyint(3) unsigned default NULL,
+  composer mediumint(8) unsigned default NULL,
+  copyright varchar(32) binary default NULL,
+  encodedby varchar(32) binary default NULL,
+  origartist mediumint(8) unsigned default NULL,
+  length mediumint(8) unsigned default NULL,
+  mediaType varchar(32) binary default NULL,
+  fileType varchar(32) binary default NULL,
+  pcounter mediumint(8) unsigned default NULL
+);
+
+CREATE TABLE MP3POPM (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  email varchar(128) binary default NULL,
+  rating smallint(5) unsigned default NULL,
+  counter smallint(5) unsigned default NULL
+);
+
+CREATE TABLE MP3UFID (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  owner varchar(128) binary default NULL,
+  identifier blob
+);
+
+CREATE TABLE MP3URLS (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  link varchar(128) binary default NULL,
+  description varchar(128) binary default NULL
+);
+
+CREATE TABLE MP3USLT (
+  mp3file mediumint(8) unsigned NOT NULL default '0',
+  lyric text,
+  description varchar(64) binary default NULL,
+  lang varchar(16) binary default NULL
+);
+
+INSERT INTO MP3Genres VALUES
+ (NULL, 'Blues'),
+ (NULL, 'Classic Rock'),
+ (NULL, 'Country'),
+ (NULL, 'Dance'),
+ (NULL, 'Disco'),
+ (NULL, 'Funk'),
+ (NULL, 'Grunge'),
+ (NULL, 'Hip-Hop'),
+ (NULL, 'Jazz'),
+ (NULL, 'Metal'),
+ (NULL, 'New Age'),
+ (NULL, 'Oldies'),
+ (NULL, 'Other'),
+ (NULL, 'Pop'),
+ (NULL, 'R&B'),
+ (NULL, 'Rap'),
+ (NULL, 'Reggae'),
+ (NULL, 'Rock'),
+ (NULL, 'Techno'),
+ (NULL, 'Industrial'),
+ (NULL, 'Alternative'),
+ (NULL, 'Ska'),
+ (NULL, 'Death Metal'),
+ (NULL, 'Pranks'),
+ (NULL, 'Soundtrack'),
+ (NULL, 'Euro-Techno'),
+ (NULL, 'Ambient'),
+ (NULL, 'Trip-Hop'),
+ (NULL, 'Vocal'),
+ (NULL, 'Jazz+Funk'),
+ (NULL, 'Fusion'),
+ (NULL, 'Trance'),
+ (NULL, 'Classical'),
+ (NULL, 'Instrumental'),
+ (NULL, 'Acid'),
+ (NULL, 'House'),
+ (NULL, 'Game'),
+ (NULL, 'Sound Clip'),
+ (NULL, 'Gospel'),
+ (NULL, 'Noise'),
+ (NULL, 'AlternRock'),
+ (NULL, 'Bass'),
+ (NULL, 'Soul'),
+ (NULL, 'Punk'),
+ (NULL, 'Space'),
+ (NULL, 'Meditative'),
+ (NULL, 'Instrumental Pop'),
+ (NULL, 'Instrumental Rock'),
+ (NULL, 'Ethnic'),
+ (NULL, 'Gothic'),
+ (NULL, 'Darkwave'),
+ (NULL, 'Techno-Industrial'),
+ (NULL, 'Electronic'),
+ (NULL, 'Pop-Folk'),
+ (NULL, 'Eurodance'),
+ (NULL, 'Dream'),
+ (NULL, 'Southern Rock'),
+ (NULL, 'Comedy'),
+ (NULL, 'Cult'),
+ (NULL, 'Gangsta'),
+ (NULL, 'Top 40'),
+ (NULL, 'Christian Rap'),
+ (NULL, 'Pop/Funk'),
+ (NULL, 'Jungle'),
+ (NULL, 'Native American'),
+ (NULL, 'Cabaret'),
+ (NULL, 'New Wave'),
+ (NULL, 'Psychadelic'),
+ (NULL, 'Rave'),
+ (NULL, 'Showtunes'),
+ (NULL, 'Trailer'),
+ (NULL, 'Lo-Fi'),
+ (NULL, 'Tribal'),
+ (NULL, 'Acid Punk'),
+ (NULL, 'Acid Jazz'),
+ (NULL, 'Polka'),
+ (NULL, 'Retro'),
+ (NULL, 'Musical'),
+ (NULL, 'Rock & Roll'),
+ (NULL, 'Hard Rock'),
+--winamp_genres--
+ (NULL, 'Folk'),
+ (NULL, 'Folk-Rock'),
+ (NULL, 'National Folk'),
+ (NULL, 'Swing'),
+ (NULL, 'Fast Fusion'),
+ (NULL, 'Bebob'),
+ (NULL, 'Latin'),
+ (NULL, 'Revival'),
+ (NULL, 'Celtic'),
+ (NULL, 'Bluegrass'),
+ (NULL, 'Avantgarde'),
+ (NULL, 'Gothic Rock'),
+ (NULL, 'Progressive Rock'),
+ (NULL, 'Psychedelic Rock'),
+ (NULL, 'Symphonic Rock'),
+ (NULL, 'Slow Rock'),
+ (NULL, 'Big Band'),
+ (NULL, 'Chorus'),
+ (NULL, 'Easy Listening'),
+ (NULL, 'Acoustic'),
+ (NULL, 'Humour'),
+ (NULL, 'Speech'),
+ (NULL, 'Chanson'),
+ (NULL, 'Opera'),
+ (NULL, 'Chamber Music'),
+ (NULL, 'Sonata'),
+ (NULL, 'Symphony'),
+ (NULL, 'Booty Bass'),
+ (NULL, 'Primus'),
+ (NULL, 'Porn Groove'),
+ (NULL, 'Satire'),
+ (NULL, 'Slow Jam'),
+ (NULL, 'Club'),
+ (NULL, 'Tango'),
+ (NULL, 'Samba'),
+ (NULL, 'Folklore'),
+ (NULL, 'Ballad'),
+ (NULL, 'Power Ballad'),
+ (NULL, 'Rhythmic Soul'),
+ (NULL, 'Freestyle'),
+ (NULL, 'Duet'),
+ (NULL, 'Punk Rock'),
+ (NULL, 'Drum Solo'),
+ (NULL, 'Acapella'),
+ (NULL, 'Euro-House'),
+ (NULL, 'Dance Hall'),
+ (NULL, 'Goa'),
+ (NULL, 'Drum & Bass'),
+ (NULL, 'Club-House'),
+ (NULL, 'Hardcore'),
+ (NULL, 'Terror'),
+ (NULL, 'Indie'),
+ (NULL, 'BritPop'),
+ (NULL, 'Negerpunk'),
+ (NULL, 'Polsk Punk'),
+ (NULL, 'Beat'),
+ (NULL, 'Christian Gangsta Rap'),
+ (NULL, 'Heavy Metal'),
+ (NULL, 'Black Metal'),
+ (NULL, 'Crossover'),
+ (NULL, 'Contemporary Christian'),
+ (NULL, 'Christian Rock'),
+ (NULL, 'Merengue'),
+ (NULL, 'Salsa'),
+ (NULL, 'Thrash Metal'),
+ (NULL, 'Anime'),
+ (NULL, 'JPop'),
+ (NULL, 'Synthpop');

@@ -1,0 +1,11 @@
+2002-07-03 Version 0.3
+- Application linked with KDE3 libraries
+- MP3 Handler uses now ID3 library v3.8.0pre2
+- Many little bugs corriged
+
+2002-05-08 Version 0.2
+- File Handlers added
+- MP3 file handler added too.
+
+2002-04-30 Version 0.1
+- First Release
